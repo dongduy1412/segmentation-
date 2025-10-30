@@ -111,10 +111,13 @@ def main(image_path, prompt, conf, model, no_display):
                 point_coords=None,
                 point_labels=None,
                 box=input_box,
-                multimask_output=False,
+                multimask_output=True,  # Generate 3 masks with different quality
             )
             
-            mask = masks[0]
+            # Choose the best mask based on score
+            best_idx = np.argmax(scores)
+            mask = masks[best_idx]
+            click.echo(f"  Selected mask {best_idx+1}/3 (score: {scores[best_idx]:.3f})")
         else:
             # Create simple mask from bounding box
             mask = np.zeros((image.shape[0], image.shape[1]), dtype=np.uint8)
