@@ -23,6 +23,8 @@ test_chairs_only.jpg
 test_fast.jpg
 example_*.jpg
 example_*.png
+output_*.jpg
+output_*.png
 
 # Ultralytics cache
 runs/
